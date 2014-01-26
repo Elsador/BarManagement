@@ -1,4 +1,4 @@
-package cool_bar.products.model;
+package cool_bar.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,8 +12,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "getAllProducts",
-                query = "SELECT p FROM product p"),
+    @NamedQuery(name = "getAllProducts", 
+                query = "SELECT p FROM Product p"),
     @NamedQuery(name = "deleteProduct",
                 query = "DELETE FROM Product p WHERE p.id = :id")
 })
@@ -26,17 +26,17 @@ public class Product {
     private String name;
     private String type;
     private String description;
-    private float price;
-//    @ManyToOne
-//    private Department department;
-//    @ManyToMany
-//    private List<Course> courses;
+    private double price;
+    
+    public Product(){
+        
+    }
 
     public Product(String name, String type, String description,
-            float price) {
+            double price) {
         this.name = name;
         this.type = type;
-        this.setDescription(description);
+        this.description = description;
         this.price = price;
     }
 
@@ -64,12 +64,11 @@ public class Product {
         this.type = type;
     }
 
-
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
