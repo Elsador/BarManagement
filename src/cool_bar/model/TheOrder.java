@@ -1,15 +1,18 @@
 package cool_bar.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlRootElement;
 
+@Entity
 @XmlRootElement
-public class Order {
+public class TheOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,9 +24,12 @@ public class Order {
     private int bigTip;
 
     @OneToMany
-    private List<Product> products;
+    private List<Product> products = new ArrayList<Product>();
 
-    public Order(int table, double totalPrice, String timeOrder,
+    public TheOrder (){
+    }
+
+    public TheOrder(int table, double totalPrice, String timeOrder,
             String status, int bigTip, List<Product> products){
         this.table = table;
         this.totalPrice = totalPrice;

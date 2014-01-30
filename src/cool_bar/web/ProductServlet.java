@@ -38,7 +38,7 @@ public class ProductServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         out.println("<html><body><table>");
-//        out.println("  Hello "+ request.getRemoteUser());
+        out.println("  Hello "+ request.getRemoteUser());
         for (cool_bar.model.Product Product : allProducts) {
             out.println("<tr>");
             out.println("<td>" + Product.getName() + "</td>");
@@ -52,8 +52,10 @@ public class ProductServlet extends HttpServlet {
 //            }
             out.println("</tr>");
         }
+        out.println("<form action=\"http://google.com\"> <input type=\"submit\" value=\"Go to Google\"> </form>");
+        out.println("<td><a href='NewOrderServlet?'>NewOrderServlet</a></td>");
+        
         out.println("</table></body></html>");
-        System.out.println("doGet Finish");
     }
 
 	/**
@@ -61,13 +63,13 @@ public class ProductServlet extends HttpServlet {
 	 */
 	@Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Product newProduct = new Product();
-        newProduct.setName(request.getParameter("name"));
-        newProduct.setType(request.getParameter("type"));
-        newProduct.setDescription(request.getParameter("description"));
-        newProduct.setPrice(Double.parseDouble(request.getParameter("price")));
-
-        response.sendRedirect("Product");
+//        Product newProduct = new Product();
+//        newProduct.setName(request.getParameter("name"));
+//        newProduct.setType(request.getParameter("type"));
+//        newProduct.setDescription(request.getParameter("description"));
+//        newProduct.setPrice(Double.parseDouble(request.getParameter("price")));
+//
+//        response.sendRedirect("Product");
 	}
 
 }
